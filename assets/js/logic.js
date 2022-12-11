@@ -12,6 +12,9 @@ var start_area = document.getElementById('start-screen')
 var choices = document.getElementById('choices');
 var end_screen = document.getElementById('end-screen');
 var alert_text = document.getElementById('alert_text')
+// sound added set up volume to 100 % before play quiz
+var correct_sound = new Audio('assets/sfx/correct.wav');
+var incorrect_sound = new Audio('assets/sfx/incorrect.wav');
 
 // adding event listener and starting 'startQuiz' function
 start.addEventListener('click', startQuiz);
@@ -59,7 +62,7 @@ function display_questions() {
             // and displaying correst message for 500ms
             if (element == right_answer[counter]) {
                 counter++;
-
+                correct_sound.play();
                 alert_text.style.color = 'green';
                 alert_text.innerText = 'correct answer';
                 setTimeout(function () { alert_text.innerText = ''; }, 500);
@@ -67,6 +70,7 @@ function display_questions() {
                 // if answer not mach substract time by 5s and display wrong answer message for 500ms
             } else {
                 time -= 5;
+                incorrect_sound.play();
                 alert_text.style.color = 'red';
                 alert_text.innerText = 'wrong answer';
                 setTimeout(function () { alert_text.innerText = ''; }, 500);

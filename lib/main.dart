@@ -58,6 +58,15 @@ class MyApp extends StatelessWidget {
                   onPressed: () {
                     startQuiz();
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green, // Background color
+                    foregroundColor: Colors.white, // Text color
+                    elevation: 5, // Elevation
+                    shape: RoundedRectangleBorder(
+                      // Button shape
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
                   child: const Text('Start Quiz'),
                 ),
               ],

@@ -10,7 +10,9 @@ class QuestionsScreen extends StatefulWidget {
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
-  Widget build(context) {
-    throw const Text('Questions');
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text('Questions'),
+    );
   }
 }

@@ -21,10 +21,11 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           // use play button here
-          FloatingActionButton(
+          OutlinedButton.icon(
             onPressed: () {},
-            backgroundColor: Colors.blue,
-            child: const Icon(Icons.play_arrow),
+            style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
+            label: const Text('Play Quiz'),
+            icon: const Icon(Icons.play_arrow),
           ),
         ],
       ),

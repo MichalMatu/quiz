@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/answer_button.dart';
 import 'package:quiz/data/questions.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -41,7 +42,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
                 currentQuestion.text,
                 textAlign: TextAlign.center,
                 // add padding to the text
-                style: const TextStyle(
+                style: GoogleFonts.lato(
                   fontSize: 20,
                   color: Colors.white,
                 ),

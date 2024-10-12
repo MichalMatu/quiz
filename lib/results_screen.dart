@@ -15,7 +15,7 @@ class ResultsScreen extends StatelessWidget {
         'question_index': i,
         'question': questions[i].text,
         'correct_answer': questions[i].answers[0],
-        'user_answer': selectedAnswer[i], // Change key to 'user_answer'
+        'user_answer': selectedAnswer[i],
       });
     }
 
@@ -24,20 +24,33 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummaryData();
+    final numTotalQuestions = questions.length;
+    final numCorrectQuestions = summaryData.where((data) {
+      return data['correct_answer'] == data['user_answer'];
+    }).length;
+
     return SizedBox(
       width: double.infinity,
       child: Container(
         margin: const EdgeInsets.all(50),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('You answered x out of y questions correctly!'),
-            const SizedBox(height: 30),
-            QuestionsSummary(getSummaryData()),
-            const SizedBox(
-              height: 30,
+            Text(
+              'You answered $numCorrectQuestions out of $numTotalQuestions questions correctly!',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
-            TextButton(onPressed: () {}, child: const Text('Restart quiz'))
+            const SizedBox(height: 30),
+            QuestionsSummary(summaryData), // Display the summary
+            const SizedBox(height: 30),
+            TextButton(
+              onPressed: () {
+                // Add restart logic here (e.g., navigating back to the quiz screen)
+              },
+              child: const Text('Restart quiz'),
+            ),
           ],
         ),
       ),

@@ -3,9 +3,11 @@ import 'package:quiz/data/questions.dart';
 import 'package:quiz/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key, required this.selectedAnswer});
+  const ResultsScreen(
+      {super.key, required this.selectedAnswer, required this.onRestart});
 
   final List<String> selectedAnswer;
+  final void Function() onRestart;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
@@ -46,9 +48,7 @@ class ResultsScreen extends StatelessWidget {
             QuestionsSummary(summaryData), // Display the summary
             const SizedBox(height: 30),
             TextButton(
-              onPressed: () {
-                // Add restart logic here (e.g., navigating back to the quiz screen)
-              },
+              onPressed: onRestart,
               child: const Text('Restart quiz'),
             ),
           ],
